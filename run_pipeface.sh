@@ -22,7 +22,7 @@ export NXF_OPTS='-Xms1g -Xmx4g'
 #Run the pipeline
 cd /software/projects/pawsey0933/long_read/pipeface
 
-nextflow run pipface.nf \
+nextflow run pipeface.nf \
     -params-file ./config/parameters_pipeface.json \
     -config ./config/nextflow_pipeface.config \
     -config /software/projects/pawsey0933/gmonahan/T2T/bam2fastq/pawsey_setonix.config \
