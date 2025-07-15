@@ -9,24 +9,26 @@
 #SBATCH --time=24:00:00
 #SBATCH --mail-user=gavin.monahan@perkins.org.au
 #SBATCH --mail-type=END
-#SBATCH --error=%j.%x.err
-#SBATCH --output=%j.%x.out
+#SBATCH --error=logs/%j/%j.%x.err
+#SBATCH --output=logs/%j/%j.%x.out
+
+cd /software/projects/pawsey0933/long_read/pipeface
+mkdir -p logs/$SLURM_JOB_ID
 
 #Load nextflow & singularity
 module load nextflow/23.10.0
 module load singularity/4.1.0-slurm
 
+#Set nextflow variables
 export NXF_WORK=/scratch/pawsey0933/long_read/
 export NXF_OPTS='-Xms1g -Xmx4g'
 
 #Run the pipeline
-cd /software/projects/pawsey0933/long_read/pipeface
-
 nextflow run pipeface.nf \
     -params-file ./config/parameters_pipeface.json \
     -config ./config/nextflow_pipeface.config \
     -config /software/projects/pawsey0933/gmonahan/T2T/bam2fastq/pawsey_setonix.config \
-    -with-timeline \
-    -with-dag \
-    -with-report \
+    -with-timeline logs/$SLURM_JOB_ID/timeline.html \
+    -with-dag logs/$SLURM_JOB_ID/dag.html \
+    -with-report logs/$SLURM_JOB_ID/report.html \
     -resume
