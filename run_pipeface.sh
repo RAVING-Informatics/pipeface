@@ -1,5 +1,5 @@
 #!/bin/bash -l 
-#SBATCH --job-name=pipeface_test
+#SBATCH --job-name=pipeface
 #SBATCH --account=pawsey0933
 #SBATCH --partition=work
 #SBATCH --ntasks=1
@@ -31,4 +31,5 @@ nextflow run pipeface.nf \
     -with-timeline logs/$SLURM_JOB_ID/timeline.html \
     -with-dag logs/$SLURM_JOB_ID/dag.html \
     -with-report logs/$SLURM_JOB_ID/report.html \
+    -with-conda \
     -resume
