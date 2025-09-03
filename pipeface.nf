@@ -231,11 +231,15 @@ process minimap2 {
         else if( data_type == 'pacbio' ) {
             preset = 'map-hifi'
         }
+
+        // double the number of CPUs
+        def double_cpus = task.cpus * 2
+
         if( extension == 'bam' )
         """
         # run minimap
         samtools fastq \
-        -@ ${task.cpus} \
+        -@ ${double_cpus} \
         -T '*' \
         $merged | minimap2 \
         -R '@RG\\tID:${sample_id}\\tSM:${sample_id}' \
@@ -245,7 +249,7 @@ process minimap2 {
         --MD \
         -a \
         -x $preset \
-        -t ${task.cpus} \
+        -t ${double_cpus} \
         $ref - | samtools sort -@ ${task.cpus} -o sorted.bam -
         # index bam
         samtools index \
@@ -262,12 +266,12 @@ process minimap2 {
         --MD \
         -a \
         -x $preset \
-        -t ${task.cpus} \
+        -t ${double_cpus} \
         $ref \
         $merged | samtools sort -@ ${task.cpus} -o sorted.bam -
         # index bam
         samtools index \
-        -@ ${task.cpus} \
+        -@ ${double_cpus} \
         sorted.bam
         """
 
@@ -358,7 +362,7 @@ process clair3 {
 
         if [[ "${params.haploidaware}" == "no" || "${params.sex}" == "XX" ]]; then 
 
-            run_clair3.sh \
+            /software/projects/pawsey0933/long_read/pipeface/Clair3/run_clair3.sh \
             --bam_fn=$bam \
             --ref_fn=$ref \
             --output=./ \
@@ -402,7 +406,7 @@ process clair3 {
         cat xnonpar.bed ynonpar.bed | sort -k1,1 -k2,2n > haploid.bed
         
         # haploid run
-        run_clair3.sh \
+        /software/projects/pawsey0933/long_read/pipeface/Clair3/run_clair3.sh \
         --bam_fn="${bam}" \
         --ref_fn="${ref}" \
         --output="haploid" \
@@ -414,7 +418,7 @@ process clair3 {
         --bed_fn="haploid.bed" --haploid_precise
         
         # diploid run
-        run_clair3.sh \
+        /software/projects/pawsey0933/long_read/pipeface/Clair3/run_clair3.sh \
         --bam_fn="${bam}" \
         --ref_fn="${ref}" \
         --output="diploid" \
@@ -1216,7 +1220,7 @@ process pbcpgtools {
         --bam $haplotagged_bam \
         --ref $ref \
         --pileup-mode model \
-        --model /g/data/if89/apps/pb-CpG-tools/2.3.2/pileup_calling_model.v1.tflite \
+        --model /software/projects/pawsey0933/long_read/pipeface/references/pileup_calling_model.v1.tflite \
         --modsites-mode denovo \
         --hap-tag HP \
         --threads ${task.cpus}

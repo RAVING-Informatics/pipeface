@@ -14,9 +14,9 @@
     "annotate": "no",
     "calculate_depth": "yes",
     "analyse_base_mods": "yes",
-    "check_relatedness": "yes",
-    "sites": "/software/projects/pawsey0933/long_read/pipeface/references/sites.hg38.v0.2.19.vcf.gz",
-    "outdir": "/scratch/pawsey0933/long_read/pipeface"
+    "check_relatedness": "no",
+    "sites": "NONE",
+    "outdir": "/scratch/pawsey0933/long_read/pipeface/2025_02"
 
 }
 

@@ -1,12 +1,12 @@
 #!/bin/bash -l 
 #SBATCH --job-name=pipeface
 #SBATCH --account=pawsey0933
-#SBATCH --partition=work
+#SBATCH --partition=long
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --mem-per-cpu=16000M
 #SBATCH --nodes=1
-#SBATCH --time=24:00:00
+#SBATCH --time=2-0:00:00
 #SBATCH --mail-user=gavin.monahan@perkins.org.au
 #SBATCH --mail-type=END
 #SBATCH --error=logs/%j/%j.%x.err
@@ -16,7 +16,7 @@ cd /software/projects/pawsey0933/long_read/pipeface
 mkdir -p logs/$SLURM_JOB_ID
 
 #Load nextflow & singularity
-module load nextflow/23.10.0
+module load nextflow/24.10.0
 module load singularity/4.1.0-slurm
 
 #Set nextflow variables
