@@ -26,7 +26,7 @@ export NXF_OPTS='-Xms1g -Xmx4g'
 #Run the pipeline
 nextflow run pipeface.nf \
     -params-file ./config/parameters_pipeface.json \
-    -config ./config/nextflow_pipeface.config \
+    -config ./config/nextflow_pipeface_setonix.config \
     -config /software/projects/pawsey0933/gmonahan/T2T/bam2fastq/pawsey_setonix.config \
     -with-timeline logs/$SLURM_JOB_ID/timeline.html \
     -with-dag logs/$SLURM_JOB_ID/dag.html \
