@@ -3,8 +3,8 @@
 #SBATCH --account=pawsey0933
 #SBATCH --partition=work
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=2
-#SBATCH --mem-per-cpu=16000M
+#SBATCH --cpus-per-task=4
+#SBATCH --mem-per-cpu=8000M
 #SBATCH --nodes=1
 #SBATCH --time=1-00:00:00
 #SBATCH --mail-user=gavin.monahan@perkins.org.au
