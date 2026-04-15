@@ -405,10 +405,10 @@ process clair3_post_processing {
         bgzip -@ ${task.cpus} haploid_ploidyfixed.g.vcf
         tabix -p vcf haploid_ploidyfixed.vcf.gz
         tabix -p vcf haploid_ploidyfixed.g.vcf.gz
-        bcftools concat -a -Oz -o unsorted.vcf.gz $diploid_snp_indel_vcf haploid_ploidyfixed.vcf.gz
+        bcftools concat --threads ${task.cpus} -a -Oz -o unsorted.vcf.gz $diploid_snp_indel_vcf haploid_ploidyfixed.vcf.gz
         bcftools sort -Oz -o snp_indel.vcf.gz unsorted.vcf.gz
         tabix -p vcf snp_indel.vcf.gz
-        bcftools concat -a -Oz -o unsorted.g.vcf.gz $diploid_snp_indel_gvcf haploid_ploidyfixed.g.vcf.gz
+        bcftools concat --threads ${task.cpus} -a -Oz -o unsorted.g.vcf.gz $diploid_snp_indel_gvcf haploid_ploidyfixed.g.vcf.gz
         bcftools sort -Oz -o snp_indel.g.vcf.gz unsorted.g.vcf.gz
         tabix -p vcf snp_indel.g.vcf.gz
         """

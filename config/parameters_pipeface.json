@@ -5,10 +5,11 @@
     "in_data_format": "ubam_fastq",
     "ref": "/software/projects/pawsey0933/long_read/pipeface/references/hg38.analysisSet.fa",
     "ref_index": "/software/projects/pawsey0933/long_read/pipeface/references/hg38.analysisSet.fa.fai",
-    "haploidaware": "yes",
+    "haploidaware":"yes",
     "sex": "XY",
     "parbed": "/software/projects/pawsey0933/long_read/pipeface/config/par_hg38.bed",
     "tandem_repeat": "NONE",
+    "mode": "singleton",
     "snp_indel_caller": "clair3",
     "sv_caller": "both",
     "annotate": "no",
@@ -16,7 +17,7 @@
     "analyse_base_mods": "yes",
     "check_relatedness": "no",
     "sites": "NONE",
-    "outdir": "/scratch/pawsey0933/long_read/pipeface/2025_02"
+    "outdir": "/scratch/pawsey0933/long_read/pipeface/2025_05"
 
 }
 
