@@ -15,9 +15,11 @@
     "annotate": "no",
     "calculate_depth": "yes",
     "analyse_base_mods": "yes",
+    "tr_calling": "",
+    "tr_call_regions": "",
     "check_relatedness": "no",
     "sites": "NONE",
-    "outdir": "/scratch/pawsey0933/long_read/pipeface/2025_05"
+    "outdir": "/scratch/pawsey0933/long_read/pipeface/2026_04"
 
 }
 
