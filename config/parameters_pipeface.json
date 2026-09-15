@@ -13,6 +13,8 @@
     "snp_indel_caller": "clair3",
     "sv_caller": "both",
     "annotate": "no",
+    "sv_mapq": "",
+    "annotate": "",
     "calculate_depth": "yes",
     "analyse_base_mods": "yes",
     "tr_calling": "",
